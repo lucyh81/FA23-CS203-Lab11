@@ -47,6 +47,17 @@ public class Encrypter {
             System.out.println("Error; " +e.toString());
         }
     }
+    private String encryptText(String text) {
+        StringBuilder result = new StringBuilder();
+
+        for (int i = 0; i < text.length(); i++) {
+            char originalChar = text.charAt(i);
+            char encryptedChar = (char) (originalChar + shift);
+            result.append(encryptedChar);
+        }
+
+        return result.toString();
+    }
 
     /**
      * Decrypts the content of an encrypted file and writes the result to another file.
@@ -68,6 +79,17 @@ public class Encrypter {
         }catch (IOException e){
             System.out.println("Error: " + e.toString());
         }
+    }
+     private String decryptedText(String encryptedText) {
+        StringBuilder result = new StringBuilder();
+
+        for (int i = 0; i < encryptedText.length(); i++) {
+            char encryptedChar = encryptedText.charAt(i);
+            char decryptedChar = (char) (encryptedChar - shift);
+            result.append(decryptedChar);
+        }
+
+        return result.toString();
     }
 
     /**
